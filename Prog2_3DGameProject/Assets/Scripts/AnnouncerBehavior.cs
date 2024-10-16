@@ -15,7 +15,7 @@ public class AnnoucerBehavior : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            Debug.Log("Where do you go, Coward! You shun Heaven's Light!");
+            Debug.Log("Where do you go! You disgrace the light!");
         }
     }
 }
