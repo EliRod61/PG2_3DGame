@@ -1166,6 +1166,7 @@ GameObject:
   - component: {fileID: 119884441478164567}
   - component: {fileID: 5393026715219320089}
   - component: {fileID: 5393026715219320090}
+  - component: {fileID: 5393026715219320091}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1423,7 +1424,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4059976903623899001}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7991dfccae688a3439cff9182e77b46b, type: 3}
   m_Name: 
@@ -1468,6 +1469,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5393026715219320091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059976903623899001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e49b837a13e0f4382611821d88c943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  runningSpeed: 4
+  jumpForce: 5
+  drag: 0
+  airMultiplier: 0
 --- !u!1 &5456200004348089210
 GameObject:
   m_ObjectHideFlags: 0

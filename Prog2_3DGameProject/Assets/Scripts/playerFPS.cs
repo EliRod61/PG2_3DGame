@@ -68,6 +68,18 @@ public class playerFPS : MonoBehaviour
         PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         //Aim movement (First Person)
         PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
+        // If left shift is held down, use the runningSpeed as the speed
+        /*if (Input.GetKey(KeyCode.LeftShift))
+        {
+            rb.AddForce(Speed * sprintMoveSpeed, ForceMode.Force);
+        }
+        // Else (left shift is not held down) use the normal speed
+        else
+        {
+            // Move the player
+            rb.AddForce(movementDirection * speed, ForceMode.Force);
+        }*/
     }
 
     private void Jump()
