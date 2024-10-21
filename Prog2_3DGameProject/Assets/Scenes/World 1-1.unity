@@ -514,7 +514,7 @@ Transform:
   m_GameObject: {fileID: 1990501167}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.3953, y: 63.776, z: -27.8395}
+  m_LocalPosition: {x: 117.4, y: 0, z: -27.8395}
   m_LocalScale: {x: 74.06453, y: 14.12235, z: 130.18471}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -538,7 +538,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1191,7 +1191,7 @@ Transform:
   m_GameObject: {fileID: 4059976903623899001}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 12.06, y: 80.28, z: -0.14}
+  m_LocalPosition: {x: 125.3, y: 19.05, z: 20.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1437,7 +1437,7 @@ MonoBehaviour:
   Player: {fileID: 4118401194426606364}
   Speed: 10
   JumpForce: 10
-  Sensetivity: 10
+  Sensitivity: 0
   Gravity: 10
   sprintMoveSpeed: 0
   Sneak: 1
@@ -1481,11 +1481,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e49b837a13e0f4382611821d88c943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  runningSpeed: 4
+  Player: {fileID: 4118401194426606364}
+  PlayerCamera: {fileID: 1046677495}
+  speed: 3
+  runningSpeed: 6
   jumpForce: 5
   drag: 0
   airMultiplier: 0
+  PlayerMouseInput: {x: 0, y: 0}
+  Sensitivity: 3
+  sneakSpeed: 0
 --- !u!1 &5456200004348089210
 GameObject:
   m_ObjectHideFlags: 0

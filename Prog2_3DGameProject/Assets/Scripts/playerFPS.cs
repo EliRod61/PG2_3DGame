@@ -8,6 +8,8 @@ public class playerFPS : MonoBehaviour
     private bool Sneaking = false;
     private float xRotation;
 
+    
+
     [Header("Components Needed")]
     [SerializeField] private Transform PlayerCamera;
     [SerializeField] private CharacterController Controller;
@@ -16,20 +18,23 @@ public class playerFPS : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float Speed;
     [SerializeField] private float JumpForce;
-    [SerializeField] private float Sensetivity;
+    [SerializeField] private float Sensitivity;
     [SerializeField] private float Gravity = 9.81f;
     [SerializeField] private float sprintMoveSpeed;
     [Space]
     [Header("Sneaking")]
     [SerializeField] private bool Sneak = false;
-    public bool onGround;
+    private bool isOnGround;
     [SerializeField] private float SneakSpeed;
 
     //bool crouched = false;
 
+
     void Start()
     {
+        //rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     // Update is called once per frame
@@ -70,16 +75,16 @@ public class playerFPS : MonoBehaviour
         PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
         // If left shift is held down, use the runningSpeed as the speed
-        /*if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            rb.AddForce(Speed * sprintMoveSpeed, ForceMode.Force);
+            //rb.AddForce(Speed * sprintMoveSpeed, ForceMode.Force);
         }
         // Else (left shift is not held down) use the normal speed
         else
         {
             // Move the player
-            rb.AddForce(movementDirection * speed, ForceMode.Force);
-        }*/
+            //rb.AddForce(movementDirection * speed, ForceMode.Force);
+        }
     }
 
     private void Jump()
@@ -88,7 +93,7 @@ public class playerFPS : MonoBehaviour
         if (Controller.isGrounded)
         {
             Velocity.y = -1f;
-            onGround = true;
+            isOnGround = true;
 
             if (Input.GetKeyDown(KeyCode.Space) && Sneaking == false)
             {
@@ -98,7 +103,7 @@ public class playerFPS : MonoBehaviour
         else
         {
             Velocity.y += Gravity * -2f * Time.deltaTime;
-            onGround = false;
+            isOnGround = false;
         }
     }
 
@@ -140,14 +145,12 @@ public class playerFPS : MonoBehaviour
             Controller.Move(MoveVector * Speed * Time.deltaTime);
         }
     }
-
-
     private void MoveCamera()
     {
-        xRotation -= PlayerMouseInput.y * Sensetivity;
+        xRotation -= PlayerMouseInput.y * Sensitivity;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.Rotate(0f, PlayerMouseInput.x * Sensetivity, 0f);
+        transform.Rotate(0f, PlayerMouseInput.x * Sensitivity, 0f);
         PlayerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 }
