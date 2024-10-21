@@ -3,31 +3,27 @@ using UnityEngine;
 public class playerFPS : MonoBehaviour
 {
     public Vector3 Velocity;
-    public Vector3 PlayerMovementInput;
-    public Vector2 PlayerMouseInput;
-    private bool Sneaking = false;
+    public Vector3 movementInput;
+    public Vector2 mouseInput;
     private float xRotation;
 
     
+    public Transform PlayerCamera;
+    public CharacterController Controller;
+    public Transform Player;
 
-    [Header("Components Needed")]
-    [SerializeField] private Transform PlayerCamera;
-    [SerializeField] private CharacterController Controller;
-    [SerializeField] private Transform Player;
-    [Space]
     [Header("Movement")]
-    [SerializeField] private float Speed;
-    [SerializeField] private float JumpForce;
-    [SerializeField] private float Sensitivity;
-    [SerializeField] private float Gravity = 9.81f;
-    [SerializeField] private float sprintMoveSpeed;
-    [Space]
-    [Header("Sneaking")]
-    [SerializeField] private bool Sneak = false;
-    private bool isOnGround;
-    [SerializeField] private float SneakSpeed;
+    public float Speed;
+    public float JumpForce;
+    public float Sensitivity;
+    public float Gravity = 9.81f;
+    public float sprintSpeed;
 
-    //bool crouched = false;
+    [Header("Sneaking")]
+    private bool Sneaking = false;
+    private bool Sneak = false;
+    private bool isOnGround;
+    public float sneakSpeed;
 
 
     void Start()
@@ -70,9 +66,9 @@ public class playerFPS : MonoBehaviour
         Controller.Move(Velocity * Time.deltaTime);
 
         //WASD movement
-        PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        movementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         //Aim movement (First Person)
-        PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
         // If left shift is held down, use the runningSpeed as the speed
         if (Input.GetKey(KeyCode.LeftShift))
@@ -133,7 +129,7 @@ public class playerFPS : MonoBehaviour
             Sneaking = false;
         }
 
-        Vector3 MoveVector = transform.TransformDirection(PlayerMovementInput); 
+        Vector3 MoveVector = transform.TransformDirection(movementInput); 
 
         //when sneaking is true, decrease speed: have normal speed otherwise
         if (Sneaking)
@@ -147,10 +143,10 @@ public class playerFPS : MonoBehaviour
     }
     private void MoveCamera()
     {
-        xRotation -= PlayerMouseInput.y * Sensitivity;
+        xRotation -= mouseInput.y * Sensitivity;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.Rotate(0f, PlayerMouseInput.x * Sensitivity, 0f);
+        transform.Rotate(0f, mouseInput.x * Sensitivity, 0f);
         PlayerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 }
