@@ -3,27 +3,28 @@ using UnityEngine;
 public class playerFPS : MonoBehaviour
 {
     public Vector3 Velocity;
-    public Vector3 movementInput;
-    public Vector2 mouseInput;
+    public Vector3 PlayerMovementInput;
+    public Vector2 PlayerMouseInput;
     private float xRotation;
 
-    
     public Transform PlayerCamera;
     public CharacterController Controller;
     public Transform Player;
 
     [Header("Movement")]
-    public float Speed;
-    public float JumpForce;
-    public float Sensitivity;
-    public float Gravity = 9.81f;
-    public float sprintSpeed;
+    [SerializeField] private float Speed;
+    [SerializeField] private float JumpForce;
+    [SerializeField] private float Sensitivity;
+    [SerializeField] private float Gravity = 9.81f;
+    [SerializeField] private float sprintMoveSpeed;
 
     [Header("Sneaking")]
-    private bool Sneaking = false;
     private bool Sneak = false;
+    private bool isSneaking = false;
     private bool isOnGround;
-    public float sneakSpeed;
+    public float SneakSpeed;
+
+    //bool crouched = false;
 
 
     void Start()
@@ -66,9 +67,9 @@ public class playerFPS : MonoBehaviour
         Controller.Move(Velocity * Time.deltaTime);
 
         //WASD movement
-        movementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         //Aim movement (First Person)
-        mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
         // If left shift is held down, use the runningSpeed as the speed
         if (Input.GetKey(KeyCode.LeftShift))
@@ -83,6 +84,10 @@ public class playerFPS : MonoBehaviour
         }
     }
 
+    private void Walk()
+    {
+       
+    }
     private void Jump()
     {
         //make the player jump
@@ -91,7 +96,7 @@ public class playerFPS : MonoBehaviour
             Velocity.y = -1f;
             isOnGround = true;
 
-            if (Input.GetKeyDown(KeyCode.Space) && Sneaking == false)
+            if (Input.GetKeyDown(KeyCode.Space) && isSneaking == false)
             {
                 Velocity.y = JumpForce;
             }
@@ -121,18 +126,18 @@ public class playerFPS : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl) && Sneak)
         {
             Player.localScale = new Vector3(1f, 0.5f, 1f);
-            Sneaking = true;
+            isSneaking = true;
         }
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             Player.localScale = new Vector3(1f, 1f, 1f);
-            Sneaking = false;
+            isSneaking = false;
         }
 
-        Vector3 MoveVector = transform.TransformDirection(movementInput); 
+        Vector3 MoveVector = transform.TransformDirection(PlayerMovementInput); 
 
         //when sneaking is true, decrease speed: have normal speed otherwise
-        if (Sneaking)
+        if (isSneaking)
         {
             Controller.Move(MoveVector * SneakSpeed * Time.deltaTime);
         }
@@ -143,10 +148,10 @@ public class playerFPS : MonoBehaviour
     }
     private void MoveCamera()
     {
-        xRotation -= mouseInput.y * Sensitivity;
+        xRotation -= PlayerMouseInput.y * Sensitivity;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.Rotate(0f, mouseInput.x * Sensitivity, 0f);
+        transform.Rotate(0f, PlayerMouseInput.x * Sensitivity, 0f);
         PlayerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 }
