@@ -715,8 +715,6 @@ GameObject:
   - component: {fileID: 5393026715219320088}
   - component: {fileID: 1578790251874908153}
   - component: {fileID: 119884441478164567}
-  - component: {fileID: 5393026715219320089}
-  - component: {fileID: 5393026715219320090}
   - component: {fileID: 5393026715219320091}
   m_Layer: 0
   m_Name: Player
@@ -784,56 +782,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5393026715219320089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4059976903623899001}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7991dfccae688a3439cff9182e77b46b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Velocity: {x: 0, y: 0, z: 0}
-  PlayerMovementInput: {x: 0, y: 0, z: 0}
-  PlayerMouseInput: {x: 0, y: 0}
-  PlayerCamera: {fileID: 1046677495}
-  Controller: {fileID: 5393026715219320090}
-  Player: {fileID: 4118401194426606364}
-  Speed: 10
-  JumpForce: 10
-  Sensitivity: 0
-  Gravity: 10
-  sprintMoveSpeed: 0
-  SneakSpeed: 1
---- !u!143 &5393026715219320090
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4059976903623899001}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5000001
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5393026715219320091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,19 +794,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e49b837a13e0f4382611821d88c943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  walkSpeed: 6
+  sprintSpeed: 10
+  wallrunSpeed: 0
   groundDrag: 5
   jumpForce: 6
   jumpCooldown: 0.25
   airMultiplier: 0.4
-  walkSpeed: 0
-  sprintSpeed: 0
+  crouchSpeed: 3.5
+  crouchYScale: 0.5
   jumpKey: 32
+  sprintKey: 304
+  crouchKey: 306
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  maxSLopeAngle: 40
   orientation: {fileID: 2073606609}
+  state: 0
+  wallrunning: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
