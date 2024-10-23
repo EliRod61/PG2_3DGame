@@ -139,7 +139,7 @@ public class playerMovement : MonoBehaviour
         }
 
         //Mode - Sliding
-        if (sliding)
+        else if (sliding)
         {
             state = MovementState.sliding;
 
