@@ -72,6 +72,8 @@ public class Sliding : MonoBehaviour
     }
     private void StopSlide()
     {
+        sliding = false;
 
+        Player.localScale = new Vector3(Player.localScale.x, startYScale, Player.localScale.z);
     }
 }
