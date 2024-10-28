@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 43283754}
   - component: {fileID: 43283753}
   - component: {fileID: 43283752}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 607252714}
   - component: {fileID: 607252713}
   - component: {fileID: 607252712}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,6 +625,10 @@ PrefabInstance:
     - target: {fileID: 2883869969444919458, guid: 5301af30edab71a41ad87b9a0972eef5, type: 3}
       propertyPath: m_Name
       value: RecoveryArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588539524218128688, guid: 5301af30edab71a41ad87b9a0972eef5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6450837857193586590, guid: 5301af30edab71a41ad87b9a0972eef5, type: 3}
       propertyPath: m_LocalPosition.x
