@@ -14,12 +14,6 @@ public class resetLevel : MonoBehaviour
         Debug.Log("build index: " + buildindex);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnTriggerEnter(Collider myCollision)
     {
         SceneManager.LoadScene(buildindex);
