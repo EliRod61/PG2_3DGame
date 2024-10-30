@@ -162,6 +162,7 @@ public class playerMovement : MonoBehaviour
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
+
         }
 
         // Mode - Walking
