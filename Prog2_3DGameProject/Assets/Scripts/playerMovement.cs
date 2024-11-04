@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class playerMovement : MonoBehaviour
 {
@@ -147,11 +148,14 @@ public class playerMovement : MonoBehaviour
         {
             state = MovementState.wallrunning;
             desiredMoveSpeed = wallrunSpeed;
+            //Debug.Log("wallrunning");
         }
 
         //Mode - Sliding
         else if (sliding)
         {
+            //Debug.Log("sliding");
+
             state = MovementState.sliding;
 
             if (OnSlope() && rb.velocity.y < 0.1f)
@@ -164,13 +168,17 @@ public class playerMovement : MonoBehaviour
         //Mode - Crouching
         else if (Input.GetKey(crouchKey))
         {
+            //Debug.Log("crouching");
+
             state = MovementState.crouching;
             desiredMoveSpeed = crouchSpeed;
         }
 
         //Mode - Sprinting
-        else if (grounded && Input.GetKey(sprintKey))
+        else if (grounded && Input.GetKey(sprintKey))//grounded &&
         {
+            //Debug.Log("sprinting");
+
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
 
@@ -179,6 +187,8 @@ public class playerMovement : MonoBehaviour
         // Mode - Walking
         else if (grounded)
         {
+            //Debug.Log("walking");
+
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
         }
@@ -186,6 +196,8 @@ public class playerMovement : MonoBehaviour
         // Mode - Air
         else
         {
+            //Debug.Log("in air");
+
             state = MovementState.air;
         }
 
@@ -314,7 +326,7 @@ public class playerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("CheckPoint"))
         {
             spawnPoint = flag.transform.position;
-            //Destroy(flag);
+            Destroy(flag);
         }
         if (other.gameObject.CompareTag("Void"))
         {
