@@ -45,6 +45,10 @@ public class playerMovement : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
+    [Header("CheckPoints")]
+    public GameObject flag;
+    Vector3 spawnPoint;
+
     public Transform orientation;
 
     float horizontalInput;
@@ -71,6 +75,8 @@ public class playerMovement : MonoBehaviour
 
     private void Start()
     {
+        spawnPoint = gameObject.transform.position;
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -93,6 +99,11 @@ public class playerMovement : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+
+        if (gameObject.transform.position.y < -40f)
+        {
+            gameObject.transform.position = spawnPoint;
+        }
     }
 
     private void FixedUpdate()
@@ -297,5 +308,17 @@ public class playerMovement : MonoBehaviour
     public Vector3 GetSlopeMoveDirection(Vector3 direction)
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("CheckPoint"))
+        {
+            spawnPoint = flag.transform.position;
+            //Destroy(flag);
+        }
+        if (other.gameObject.CompareTag("Void"))
+        {
+            gameObject.transform.position = spawnPoint;
+        }
     }
 }
