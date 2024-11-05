@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class ItemRotation : MonoBehaviour
 {
-    public float RotationSpeed = 100f;
+    public float rotateX = 100f;
+    public float rotateY = 100f;
+    public float rotateZ = 100f;
     private Transform itemTransform;
+
     // Start is called before the first frame update
     void Start()
     {
-        //Grabbing GameObject’s Transform component and assign to itemTransform
         itemTransform = this.GetComponent<Transform>();
     }
 
@@ -18,7 +20,6 @@ public class ItemRotation : MonoBehaviour
     void Update()
     {
         //Should always multiply your movement or rotation speeds by Time.deltaTime
-        //itemTransform.Rotate(RotationSpeed * Time.deltaTime, 0, 0);
-        itemTransform.Rotate(0, 0, RotationSpeed * Time.deltaTime);
+        itemTransform.Rotate(rotateX * Time.deltaTime, rotateY * Time.deltaTime, rotateZ * Time.deltaTime);
     }
 }
